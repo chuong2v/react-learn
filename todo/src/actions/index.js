@@ -38,11 +38,10 @@ export const setFetchedTodos = (todos) => {
   }
 }
 
-export function fetchTodos(){
-  return (dispatch, getState) => {
+export function fetchTodos(dispatch){
+  console.log("[actions][fetchTodos]")
     return Api.get('/').then(resp => {
       console.log("response from server:", resp)
       dispatch(setFetchedTodos(resp))
     })
-  }
 }

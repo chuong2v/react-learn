@@ -6,15 +6,7 @@ const loggerMiddleware = createLogger({});
 export default function configureStore() {
   const initialState = {
     visibilityFilter: "SHOW_ALL",
-    todos: [{
-      completed: false,
-      text: "chuong",
-      id: 100001
-    }, {
-      completed: true,
-      text: "html",
-      id: 100000
-    }]
+    todos: []
   };
   const enhancer = compose(
     applyMiddleware(
