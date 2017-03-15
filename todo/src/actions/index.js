@@ -11,7 +11,6 @@ export const _addTodo = (todo) => {
 
 export function addTodo(dispatch, text){
   return Api.post('/todos', {text: text}).then(resp => {
-    console.log("response from server:", resp)
     dispatch(_addTodo(resp))
   })
 }
@@ -33,13 +32,11 @@ export const _toggleTodo = (id) => {
 
 export const toggleTodo = (dispatch, id, completed) => {
   return Api.post('/todos/' + id, {completed: !completed}).then(resp => {
-    console.log("response from server:", resp)
     dispatch(_toggleTodo(id))
   })
 }
 
 export const _deleteTodo = (id) => {
-  console.log("id", id)
   return {
     type: 'DELETE_TODO',
     id
@@ -48,7 +45,6 @@ export const _deleteTodo = (id) => {
 
 export const deleteTodo = (dispatch, id) => {
   return Api.delete('/todos/' + id).then(resp => {
-    console.log("response from server:", resp)
     dispatch(_deleteTodo(id))
   })
 }
@@ -61,9 +57,7 @@ export const setFetchedTodos = (todos) => {
 }
 
 export function fetchTodos(dispatch){
-  console.log("[actions][fetchTodos]")
     return Api.get('/todos').then(resp => {
-      console.log("response from server:", resp)
       dispatch(setFetchedTodos(resp))
     })
 }

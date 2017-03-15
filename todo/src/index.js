@@ -5,7 +5,6 @@ import App from './components/App'
 import configureStore from './configs/configureStore'
 
 const store = configureStore();
-console.log("state", store.getState())
 
 render(
   <Provider store={store}>

@@ -17,7 +17,6 @@ const todos = createReducer({}, {
     })
   },
   [types.DELETE_TODO](state, action){
-    console.log("action.id", action.id)
     let newState = [...state]
     let index = state.findIndex(t => t.id === action.id);
     newState.splice(index, 1)
