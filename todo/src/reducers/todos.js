@@ -3,12 +3,7 @@ import createReducer from './../lib/createReducer'
 
 const todos = createReducer({}, {
   [types.ADD_TODO](state, action){
-    return [
-      ...state, {
-      id: action.id,
-      text: action.text,
-      completed: false
-    }];
+    return [...state, action.todo];
   },
   [types.TOGGLE_TODO](state, action){
     return state.map(t => {
@@ -22,8 +17,10 @@ const todos = createReducer({}, {
     })
   },
   [types.DELETE_TODO](state, action){
+    console.log("action.id", action.id)
     let newState = [...state]
-    newState.splice(state.find(t => t.id === action.id), 1)
+    let index = state.findIndex(t => t.id === action.id);
+    newState.splice(index, 1)
     return newState
   },
   [types.SET_FETCHED_TODOS](state, action){

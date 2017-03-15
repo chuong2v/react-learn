@@ -4,8 +4,7 @@ class Api {
   static headers() {
     return {
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'dataType': 'json'
+      'Content-Type': 'application/json'
     }
   }
 
@@ -18,6 +17,7 @@ class Api {
   }
 
   static post(route, params) {
+    console.log("params", params)
     return this.xhr(route, params, 'POST');
   }
 
@@ -29,6 +29,7 @@ class Api {
     const host = API_URL;
     const url = `${host}${route}`;
     let options = Object.assign({method: verb}, params ? {body: JSON.stringify(params)} : null);
+    options.headers = Api.headers();
     return fetch(url, options).then(resp => {
       let json = resp.json();
       if (resp.ok) {

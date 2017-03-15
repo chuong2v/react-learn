@@ -11,7 +11,7 @@ class TodoList extends React.Component {
         <Todo
           key={todo.id}
           {...todo}
-          onClick={() => this.props.onTodoClick(todo.id)}
+          onClick={() => this.props.onTodoClick(todo.id, todo.completed)}
           deleteTodo={() => this.props.onDeleteTodo(todo.id)}
         />
       )}
@@ -22,7 +22,7 @@ class TodoList extends React.Component {
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,

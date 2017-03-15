@@ -12,7 +12,7 @@ let AddTodo = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(addTodo(input.value))
+        addTodo(dispatch, input.value)
         input.value = ''
       }}>
         <input ref={node => {
