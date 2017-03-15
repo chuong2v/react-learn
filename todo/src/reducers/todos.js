@@ -23,8 +23,11 @@ const todos = createReducer({}, {
   },
   [types.DELETE_TODO](state, action){
     let newState = [...state]
-    newState.splice(state.find(t => t.id == action.id), 1)
+    newState.splice(state.find(t => t.id === action.id), 1)
     return newState
+  },
+  [types.SET_FETCHED_TODOS](state, action){
+    return action.todos
   }
 })
 
