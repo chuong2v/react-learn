@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import { ActionCreators } from '../actions'
+import { bindActionCreators } from 'redux'
 
-let AddTodo = ({ dispatch }) => {
+let AddTodo = ({addTodo}) => {
   let input
 
   return (
@@ -12,7 +13,7 @@ let AddTodo = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        addTodo(dispatch, input.value)
+        addTodo(input.value)
         input.value = ''
       }}>
         <input ref={node => {
@@ -25,6 +26,9 @@ let AddTodo = ({ dispatch }) => {
     </div>
   )
 }
-AddTodo = connect()(AddTodo)
+function mapDispatchToProps(dispatch){
+  return bindActionCreators(ActionCreators, dispatch)
+}
+AddTodo = connect(()=>{return {}}, mapDispatchToProps)(AddTodo)
 
 export default AddTodo

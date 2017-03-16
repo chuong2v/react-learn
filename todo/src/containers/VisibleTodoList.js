@@ -1,6 +1,9 @@
 import { connect } from 'react-redux'
-import { toggleTodo, deleteTodo, fetchTodos } from '../actions'
 import TodoList from '../components/TodoList'
+
+import * as TodoActionCreators from './../actions/todo'
+import {bindActionCreators} from 'redux';
+
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
     case 'SHOW_ALL':
@@ -19,16 +22,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onTodoClick: (id, completed) => {
-      toggleTodo(dispatch, id, completed)
-    },
-    onDeleteTodo: (id) => {
-      deleteTodo(dispatch, id)
-    },
-    fetchTodos: ()=>{fetchTodos(dispatch)}
-  }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(TodoActionCreators, dispatch)
 }
 
 const VisibleTodoList = connect(
