@@ -3,7 +3,7 @@ import Api from './../lib/api'
 
 export const _addTodo = (todo) => {
   return {
-    type: 'ADD_TODO',
+    type: types.ADD_TODO,
     todo
   }
 }
@@ -20,14 +20,14 @@ export function addTodo(text){
 
 export const setVisibilityFilter = (filter) => {
   return {
-    type: 'SET_VISIBILITY_FILTER',
+    type: types.SET_VISIBILITY_FILTER,
     filter
   }
 }
 
 export const _toggleTodo = (id) => {
   return {
-    type: 'TOGGLE_TODO',
+    type: types.TOGGLE_TODO,
     id
   }
 }
@@ -42,7 +42,7 @@ export const toggleTodo = (id, completed) => {
 
 export const _deleteTodo = (id) => {
   return {
-    type: 'DELETE_TODO',
+    type: types.DELETE_TODO,
     id
   }
 }

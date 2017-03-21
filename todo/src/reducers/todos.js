@@ -10,7 +10,7 @@ const todos = createReducer({}, {
       if (t.id !== action.id) {
         return t
       }
-
+       
       return Object.assign({}, t, {
         completed: !t.completed
       })
